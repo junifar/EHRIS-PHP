@@ -31,7 +31,8 @@
         <div class="container">
             <div class="col-md-4 content-center">
                 <div class="card card-login card-plain">
-                    <form class="form" method="" action="">
+                    <form class="form" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
                         <div class="header header-primary text-center">
                             <div class="logo-container">
                                 <img src="{{ asset('component/now-ui-kit/assets/img/now-logo.png')  }}">
@@ -42,17 +43,22 @@
                                     <span class="input-group-addon">
                                         <i class="now-ui-icons users_circle-08"></i>
                                     </span>
-                                <input type="text" class="form-control" placeholder="First Name...">
+                                <input id="email"  type="text" class="form-control" placeholder="First Name..." name="email" value="{{ old('email') }}" required autofocus>
                             </div>
                             <div class="input-group form-group-no-border input-lg">
                                     <span class="input-group-addon">
                                         <i class="now-ui-icons ui-1_lock-circle-open"></i>
                                     </span>
-                                <input type="password" placeholder="Password..." class="form-control" />
+                                <input id="password" type="password" placeholder="Password..." class="form-control" name="password" required />
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+                            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">
+                                Get Started
+                            </button>
+                        </div>
+                        <div class="footer">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                         </div>
                         <div class="pull-left">
                             <h6>
