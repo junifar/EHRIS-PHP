@@ -22,7 +22,7 @@
     <link href="{{ asset('component/now-ui-kit/assets/css/now-ui-kit.css') }}" rel="stylesheet">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{ asset('component/now-ui-kit/assets/css/demo.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('component/now-ui-kit/assets/css/demo.css') }}" rel="stylesheet">--}}
 </head>
 <body class="login-page">
     <!-- End Navbar -->
