@@ -22,5 +22,7 @@ Route::get('/kecamatan', 'KecamatanController@index');
 
 
 Route::get('/companies', 'CompanyController@index')->name('companies');
-Route::get('/companies/data', 'CompanyController@index_data');
+Route::get('/companies/data', 'CompanyController@index_data')->name('companies.data');
+Route::get('/companies/create', 'CompanyController@create')->name('companies.create');
+Route::post('/companies/store', 'CompanyController@store');
 

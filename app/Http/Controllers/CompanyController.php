@@ -20,7 +20,7 @@ class CompanyController extends Controller
 
     public function index_data()
     {
-        return Datatables::of(Company::take(10000))->make(true);
+        return Datatables::of(Company::take(10000)->orderBy('id', 'DESC'))->make(true);
     }
 
     /**
@@ -30,7 +30,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.create');
+        return 'Create Activate';
     }
 
     /**
@@ -41,7 +42,10 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Company();
+        $data['name'] = $request['name'];
+        $data->save();
+        return redirect('companies');
     }
 
     /**

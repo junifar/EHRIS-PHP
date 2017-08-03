@@ -87,6 +87,18 @@
                                 <i class="fa fa-dashboard"></i> <span>Admin Dashboard</span>
                             </a>
                         </li>
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-th-large"></i> <span>Company</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                            <li><a href="{!! route('companies'); !!}"><i class="fa fa-th-large"></i> Company</a></li>
+                            </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="pages/widgets.html">
                                 <i class="fa fa-th"></i> <span>Widgets</span>
@@ -172,7 +184,7 @@
 
         <!-- DataTables -->
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+        {{--<script src="https://cdn.datatables.net/1.10.15/js/dataTables.foundation.min.js"></script>--}}
 
         <!-- Bootstrap 3.3.7 -->
         <script src="{{asset('plugins/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
