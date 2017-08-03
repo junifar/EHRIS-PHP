@@ -11,6 +11,8 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.2 -->
         <link href="{{asset('plugins/AdminLTE/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- Ionicons -->
@@ -30,6 +32,8 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        @stack('css-head')
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -78,18 +82,10 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="active treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                                <span class="pull-right-container">
-                                  <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <li>
+                            <a href="{!! route('companies'); !!}">
+                                <i class="fa fa-dashboard"></i> <span>Admin Dashboard</span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="pages/widgets.html">
@@ -173,6 +169,11 @@
 
         <!-- jQuery 2.2.3 -->
         <script src="{{asset('plugins/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+
+        <!-- DataTables -->
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
         <!-- Bootstrap 3.3.7 -->
         <script src="{{asset('plugins/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
         <!-- PACE -->
@@ -203,5 +204,7 @@
                 }});
             });
         </script>
+
+        @stack('scripts')
     </body>
 </html>

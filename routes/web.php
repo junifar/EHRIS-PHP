@@ -19,3 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/kecamatan', 'KecamatanController@index');
+
+
+Route::get('/companies', 'CompanyController@index')->name('companies');
+Route::get('/companies/data', 'CompanyController@index_data');
+
