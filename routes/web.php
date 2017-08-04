@@ -20,9 +20,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/kecamatan', 'KecamatanController@index');
 
-
+//Company Action
 Route::get('/companies', 'CompanyController@index')->name('companies');
 Route::get('/companies/data', 'CompanyController@index_data')->name('companies.data');
 Route::get('/companies/create', 'CompanyController@create')->name('companies.create');
 Route::post('/companies/store', 'CompanyController@store');
 
+//Bank Action
+Route::get('/banks', 'BankController@index')->name('banks');
+Route::get('/banks/data', 'BankController@index_data')->name('banks.data');
+Route::get('/banks/create', 'BankController@create')->name('banks.create');
+Route::post('/banks/store', 'BankController@store');

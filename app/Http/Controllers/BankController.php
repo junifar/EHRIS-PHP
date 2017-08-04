@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
+use App\Bank;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
-class CompanyController extends Controller
+class BankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company.index');
+        return view('bank.index');
     }
 
-    public function index_data()
-    {
-        return Datatables::of(Company::take(10000)->orderBy('id', 'DESC'))->make(true);
+    public function index_data(){
+        return Datatables::of(Bank::take(10000)->orderBy('id', 'DESC'))->make(true);
     }
 
     /**
@@ -30,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('company.create');
+        return view('bank.create');
     }
 
     /**
@@ -41,10 +40,10 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Company();
+        $data = new Bank();
         $data['name'] = $request['name'];
         $data->save();
-        return redirect('companies');
+        return redirect('banks');
     }
 
     /**
