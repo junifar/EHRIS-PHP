@@ -89,6 +89,18 @@
                         </li>
                         <li class="active treeview">
                             <a href="#">
+                                <i class="fa fa-users"></i> <span>Employees</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{!! route('employees'); !!}"><i class="fa fa-users"></i> Employees List</a></li>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active treeview">
+                            <a href="#">
                                 <i class="fa fa-th-large"></i> <span>Company</span>
                                 <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>

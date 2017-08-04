@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bank;
+use App\DataTables\BanksDataTable;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -11,15 +12,12 @@ class BankController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param BanksDataTable $dataTable
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(BanksDataTable $dataTable)
     {
-        return view('bank.index');
-    }
-
-    public function index_data(){
-        return Datatables::of(Bank::take(10000)->orderBy('id', 'DESC'))->make(true);
+        return $dataTable->render('bank.index');
     }
 
     /**

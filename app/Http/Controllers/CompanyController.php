@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\DataTables\CompaniesDataTable;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -11,16 +12,12 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param CompaniesDataTable $dataTable
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CompaniesDataTable $dataTable)
     {
-        return view('company.index');
-    }
-
-    public function index_data()
-    {
-        return Datatables::of(Company::take(10000)->orderBy('id', 'DESC'))->make(true);
+        return $dataTable->render('company.index');
     }
 
     /**

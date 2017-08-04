@@ -15,15 +15,7 @@
                 <h3 class="panel-title">Banks</h3>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered" id="banks-table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Created At</th>
-                    </tr>
-                    </thead>
-                </table>
+                {!! $dataTable->table() !!}
             </div>
         </div>
     </div>
@@ -36,28 +28,30 @@
 
 @push('scripts')
     <script>
-        $(function() {
-            $('#banks-table').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        text: 'Insert',
-                        action: function ( e, dt, node, config ) {
-                            window.location = "{!! route('banks.create'); !!}";
-                        }
-                    }
-                ],
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('banks.data'); !!}',
-                columns: [
-                    { data: 'ID', name: 'id' },
-                    { data: 'NAME', name: 'name' },
-                    { data: 'CREATED_AT', name: 'created_at' }
-                ]
-            });
-        });
+        {{--$(function() {--}}
+            {{--$('#banks-table').DataTable({--}}
+                {{--dom: 'Bfrtip',--}}
+                {{--buttons: [--}}
+                    {{--{--}}
+                        {{--text: 'Insert',--}}
+                        {{--action: function ( e, dt, node, config ) {--}}
+                            {{--window.location = "{!! route('banks.create'); !!}";--}}
+                        {{--}--}}
+                    {{--}--}}
+                {{--],--}}
+                {{--processing: true,--}}
+                {{--serverSide: true,--}}
+                {{--ajax: '{!! route('banks.data'); !!}',--}}
+                {{--columns: [--}}
+                    {{--{ data: 'ID', name: 'id' },--}}
+                    {{--{ data: 'NAME', name: 'name' },--}}
+                    {{--{ data: 'CREATED_AT', name: 'created_at' }--}}
+                {{--]--}}
+            {{--});--}}
+        {{--});--}}
     </script>
 
     <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script src="/vendor/datatables/buttons.server-side.js"></script>
+    {!! $dataTable->scripts() !!}
 @endpush

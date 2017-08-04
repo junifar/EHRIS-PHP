@@ -22,7 +22,7 @@ Route::get('/kecamatan', 'KecamatanController@index');
 
 //Company Action
 Route::get('/companies', 'CompanyController@index')->name('companies');
-Route::get('/companies/data', 'CompanyController@index_data')->name('companies.data');
+//Route::get('/companies/data', 'CompanyController@index_data')->name('companies.data');
 Route::get('/companies/create', 'CompanyController@create')->name('companies.create');
 Route::post('/companies/store', 'CompanyController@store');
 
@@ -49,3 +49,9 @@ Route::get('/job_titles', 'JobTitleController@index')->name('job_titles');
 Route::get('/job_titles/data', 'JobTitleController@index_data')->name('job_titles.data');
 Route::get('/job_titles/create', 'JobTitleController@create')->name('job_titles.create');
 Route::post('/job_titles/store', 'JobTitleController@store');
+
+//Employees Action
+Route::get('/employees', 'EmployeeController@index')->name('employees');
+Route::get('/employees/data', 'EmployeeController@index_data')->name('employees.data');
+Route::get('/employees/create', 'EmployeeController@create')->name('employees.create');
+Route::post('/employees/store', 'EmployeeController@store');
