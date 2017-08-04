@@ -31,3 +31,9 @@ Route::get('/banks', 'BankController@index')->name('banks');
 Route::get('/banks/data', 'BankController@index_data')->name('banks.data');
 Route::get('/banks/create', 'BankController@create')->name('banks.create');
 Route::post('/banks/store', 'BankController@store');
+
+//Department Action
+Route::get('/departments', 'DepartmentController@index')->name('departments');
+Route::get('/departments/data', 'DepartmentController@index_data')->name('departments.data');
+Route::get('/departments/create', 'DepartmentController@create')->name('departments.create');
+Route::post('/departments/store', 'DepartmentController@store');
