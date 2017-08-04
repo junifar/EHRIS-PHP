@@ -13,7 +13,7 @@ class BankController extends Controller
      * Display a listing of the resource.
      *
      * @param BanksDataTable $dataTable
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index(BanksDataTable $dataTable)
     {
