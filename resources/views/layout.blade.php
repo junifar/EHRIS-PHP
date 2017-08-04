@@ -108,9 +108,9 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{!! route('banks'); !!}"><i class="fa fa-money"></i> Banks</a></li>
-                                </li>
                                 <li><a href="{!! route('departments'); !!}"><i class="fa fa-briefcase"></i> Departement List</a></li>
-                                </li>
+                                <li><a href="{!! route('religions'); !!}"><span style="font-weight: bold;font-size: 20px;padding-right: 13px;" class="text-uppercase">R</span>Religion List</a></li>
+                                <li><a href="{!! route('job_titles'); !!}"><i class="fa fa-user-secret"></i> Job Title List</a></li>
                             </ul>
                         </li>
                     </ul>

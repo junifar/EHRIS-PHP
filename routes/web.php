@@ -37,3 +37,15 @@ Route::get('/departments', 'DepartmentController@index')->name('departments');
 Route::get('/departments/data', 'DepartmentController@index_data')->name('departments.data');
 Route::get('/departments/create', 'DepartmentController@create')->name('departments.create');
 Route::post('/departments/store', 'DepartmentController@store');
+
+//Religion Action
+Route::get('/religions', 'ReligionController@index')->name('religions');
+Route::get('/religions/data', 'ReligionController@index_data')->name('religions.data');
+Route::get('/religions/create', 'ReligionController@create')->name('religions.create');
+Route::post('/religions/store', 'ReligionController@store');
+
+//JobTitles Action
+Route::get('/job_titles', 'JobTitleController@index')->name('job_titles');
+Route::get('/job_titles/data', 'JobTitleController@index_data')->name('job_titles.data');
+Route::get('/job_titles/create', 'JobTitleController@create')->name('job_titles.create');
+Route::post('/job_titles/store', 'JobTitleController@store');
