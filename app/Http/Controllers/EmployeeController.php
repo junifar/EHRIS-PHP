@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Bank;
 use App\DataTables\EmployeesDataTable;
 use App\Department;
 use App\Employee;
+use App\EmployeeStatus;
 use App\Gender;
+use App\JobTitle;
 use App\Religion;
+use App\Status;
 use Illuminate\Http\Request;
-use Yajra\Datatables\Datatables;
+
 
 class EmployeeController extends Controller
 {
@@ -33,7 +37,13 @@ class EmployeeController extends Controller
         $departments = Department::take(10000)->orderBy('name', 'ASC')->pluck('name', 'id');
         $genders = Gender::take(1000)->pluck('name', 'id');
         $religions = Religion::take(1000)->pluck('name', 'id');
-        return view('employee.create', compact('departments','genders', 'religions'));
+        $banks = Bank::take(1000)->pluck('name','id');
+        $job_titles = JobTitle::take(1000)->pluck('name','id');
+        $employees = Employee::take(10000)->pluck('name', 'id');
+        $statuses = Status::take(10000)->pluck('name', 'id');
+        $employee_statuses = EmployeeStatus::take(10000)->pluck('name', 'id');
+        return view('employee.create', compact('departments','genders', 'religions', 'banks',
+            'job_titles', 'employees', 'statuses', 'employee_statuses'));
     }
 
     /**
@@ -46,6 +56,22 @@ class EmployeeController extends Controller
     {
         $data = new Employee();
         $data['name'] = $request['name'];
+        $data['noreg'] = $request['noreg'];
+        $data['no_ktp'] = $request['no_ktp'];
+        $data['religion_id'] = $request['religion_id'];
+        $data['phone'] = $request['phone'];
+        $data['handphone'] = $request['handphone'];
+        $data['tempat_lahir'] = $request['tempat_lahir'];
+        $data['tanggal_lahir'] = $request['tanggal_lahir'];
+        $data['gender_id'] = $request['gender_id'];
+        $data['status_id'] = $request['status'];
+        $data['employee_status_id'] = $request['employee_status_id'];
+        $data['remark'] = $request['remark'];
+        $data['department_id'] = $request['department_id'];
+        $data['job_id'] = $request['job_id'];
+        $data['date_joining'] = $request['date_joining'];
+        $data['address'] = $request['address'];
+        $data['manager_id'] = $request['manager_id'];
         $data->save();
         return redirect('employees');
     }
@@ -58,7 +84,17 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Employee::find($id);
+        $departments = Department::take(10000)->orderBy('name', 'ASC')->pluck('name', 'id');
+        $genders = Gender::take(1000)->pluck('name', 'id');
+        $religions = Religion::take(1000)->pluck('name', 'id');
+        $banks = Bank::take(1000)->pluck('name','id');
+        $job_titles = JobTitle::take(1000)->pluck('name','id');
+        $employees = Employee::take(10000)->pluck('name', 'id');
+        $statuses = Status::take(10000)->pluck('name', 'id');
+        $employee_statuses = EmployeeStatus::take(10000)->pluck('name', 'id');
+        return view('employee.show', compact(['data', 'departments', 'genders', 'religions', 'banks',
+            'job_titles', 'employees', 'statuses', 'employee_statuses']));
     }
 
     /**

@@ -52,6 +52,6 @@ Route::post('/job_titles/store', 'JobTitleController@store');
 
 //Employees Action
 Route::get('/employees', 'EmployeeController@index')->name('employees');
-//Route::get('/employees/data', 'EmployeeController@index_data')->name('employees.data');
 Route::get('/employees/create', 'EmployeeController@create')->name('employees.create');
 Route::post('/employees/store', 'EmployeeController@store');
+Route::get('/employees/show/{id}', 'EmployeeController@show')->name('employees.show');

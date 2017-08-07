@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Employee;
-use App\User;
 use Yajra\Datatables\Services\DataTable;
 
 class EmployeesDataTable extends DataTable
@@ -15,9 +14,12 @@ class EmployeesDataTable extends DataTable
      */
     public function dataTable()
     {
+        $data = $this->query();
         return $this->datatables
-            ->eloquent($this->query());
-//            ->addColumn('action', 'employeesdatatable.action');
+            ->eloquent($this->query())
+            ->addColumn('action', function($data){
+                return '<a href="/employees/show/'.$data->id.'" class="btn btn-xs btn-primary">Show</a>';
+            });
     }
 
     /**
@@ -27,8 +29,15 @@ class EmployeesDataTable extends DataTable
      */
     public function query()
     {
-        $query = Employee::query()->select($this->getColumns());
-
+        $query = Employee::leftjoin('departments', 'employees.department_id', '=', 'departments.id')
+            ->leftJoin('employee_statuses', 'employees.employee_status_id', '=', 'employee_statuses.id')
+            ->select([
+                    'employees.id',
+                    'employees.noreg',
+                    'employees.name',
+                    'departments.name as department_name',
+                    'employee_statuses.name as status'
+                ]);
         return $this->applyScopes($query);
     }
 
@@ -42,7 +51,7 @@ class EmployeesDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax('')
-                    ->addAction(['width' => '80px'])
+//                    ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -50,8 +59,8 @@ class EmployeesDataTable extends DataTable
                             'create',
                             'export',
                             'print',
-                            'reset',
-                            'reload',
+//                            'reset',
+//                            'reload',
                         ],
                     ]);
     }
@@ -65,9 +74,13 @@ class EmployeesDataTable extends DataTable
     {
         return [
             'id',
+            'noreg',
             'name',
-            'created_at',
-            'updated_at'
+            'department_name',
+            'status',
+//            'created_at',
+//            'updated_at'
+            'action' => ['orderable' => false, 'searchable' => false]
         ];
     }
 
