@@ -55,6 +55,11 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $data = new Employee();
+
+        $imageName = $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(base_path().'/public/images/catalog/', $imageName);
+
+        $data['file_name'] = '/images/catalog/'.$imageName;
         $data['name'] = $request['name'];
         $data['noreg'] = $request['noreg'];
         $data['no_ktp'] = $request['no_ktp'];

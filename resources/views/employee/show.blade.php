@@ -31,6 +31,9 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-12">
+                                <div class="col-md-12">
+                                    {{ Form::image($data['FILE_NAME']) }}
+                                </div>
                                 <div class="form-group {{$errors->has('name')?'has-error':''}}">
                                     {!! Form::label('name','Nama Lengkap * :', ['class' => 'col-sm-5 control-label']) !!}
                                     <div class="col-sm-7">

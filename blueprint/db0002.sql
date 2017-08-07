@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2017-08-04 18:02:22
+Date: 2017-08-07 18:33:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `banks` (
   `USER_CREATED` int(11) DEFAULT NULL,
   `USER_MODIFIED` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for companies
@@ -105,8 +105,9 @@ CREATE TABLE `employees` (
   `DATE_JOINING` date DEFAULT NULL,
   `ADDRESS` text,
   `MANAGER_ID` int(11) DEFAULT NULL,
+  `FILE_NAME` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for employee_bank_accounts
@@ -140,7 +141,7 @@ CREATE TABLE `employee_statuses` (
   `USER_CREATED` int(11) DEFAULT NULL,
   `USER_MODIFIED` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for genders
@@ -154,7 +155,7 @@ CREATE TABLE `genders` (
   `USER_CREATED` int(11) DEFAULT NULL,
   `USER_MODIFIED` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for job_titles
@@ -204,7 +205,7 @@ CREATE TABLE `religions` (
   `USER_CREATED` int(11) DEFAULT NULL,
   `USER_MODIFIED` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for statuses
@@ -218,7 +219,7 @@ CREATE TABLE `statuses` (
   `USER_CREATED` int(11) DEFAULT NULL,
   `USER_MODIFIED` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for users
