@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Bank;
+use App\Employee;
 use App\User;
 use Yajra\Datatables\Services\DataTable;
 
-class BanksDataTable extends DataTable
+class EmployeesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -17,7 +17,7 @@ class BanksDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query());
-//            ->addColumn('action', 'banksdatatable.action');
+//            ->addColumn('action', 'employeesdatatable.action');
     }
 
     /**
@@ -27,7 +27,7 @@ class BanksDataTable extends DataTable
      */
     public function query()
     {
-        $query = Bank::query()->select($this->getColumns());
+        $query = Employee::query()->select($this->getColumns());
 
         return $this->applyScopes($query);
     }
@@ -48,7 +48,7 @@ class BanksDataTable extends DataTable
                         'order'   => [[0, 'desc']],
                         'buttons' => [
                             'create',
-//                            'export',
+                            'export',
                             'print',
                             'reset',
                             'reload',
@@ -78,6 +78,6 @@ class BanksDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'banksdatatable_' . time();
+        return 'employeesdatatable_' . time();
     }
 }

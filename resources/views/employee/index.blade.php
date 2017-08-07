@@ -15,15 +15,7 @@
                 <h3 class="panel-title">Employees</h3>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered" id="employees-table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Created At</th>
-                    </tr>
-                    </thead>
-                </table>
+                {!! $dataTable->table() !!}
             </div>
         </div>
     </div>
@@ -35,29 +27,8 @@
 @endpush
 
 @push('scripts')
-    <script>
-        $(function() {
-            $('#employees-table').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        text: 'Insert',
-                        action: function ( e, dt, node, config ) {
-                            window.location = "{!! route('employees.create'); !!}";
-                        }
-                    }
-                ],
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('employees.data'); !!}',
-                columns: [
-                    { data: 'ID', name: 'id' },
-                    { data: 'NAME', name: 'name' },
-                    { data: 'CREATED_AT', name: 'created_at' }
-                ]
-            });
-        });
-    </script>
 
     <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script src="/vendor/datatables/buttons.server-side.js"></script>
+    {!! $dataTable->scripts() !!}
 @endpush

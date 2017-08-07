@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\EmployeesDataTable;
+use App\Department;
 use App\Employee;
+use App\Gender;
+use App\Religion;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -11,15 +15,12 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param EmployeesDataTable $dataTable
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(EmployeesDataTable $dataTable)
     {
-        return view('employee.index');
-    }
-
-    public function index_data(){
-        return Datatables::of(Employee::take(10000)->orderBy('id', 'DESC'))->make(true);
+        return $dataTable->render('employee.index');
     }
 
     /**
@@ -29,7 +30,10 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $departments = Department::take(10000)->orderBy('name', 'ASC')->pluck('name', 'id');
+        $genders = Gender::take(1000)->pluck('name', 'id');
+        $religions = Religion::take(1000)->pluck('name', 'id');
+        return view('employee.create', compact('departments','genders', 'religions'));
     }
 
     /**
