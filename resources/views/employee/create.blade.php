@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="row col-md-12">
-        {!! Form::open(array('url' => array('employees/store'), 'class' => 'form-horizontal', 'files' => true)) !!}
+        {!! Form::open(array('url' => array('adm/employees/store'), 'class' => 'form-horizontal', 'files' => true)) !!}
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="panel-title">

@@ -18,7 +18,7 @@ class EmployeesDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', function($data){
-                return '<a href="/employees/show/'.$data->id.'" class="btn btn-xs btn-primary">Show</a>';
+                return '<a href="/adm/employees/show/'.$data->id.'" class="btn btn-xs btn-primary">Show</a>';
             });
     }
 
@@ -73,7 +73,7 @@ class EmployeesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+//            'id',
             'noreg',
             'name',
             'department_name',

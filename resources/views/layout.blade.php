@@ -87,18 +87,7 @@
                                 <i class="fa fa-dashboard"></i> <span>Admin Dashboard</span>
                             </a>
                         </li>
-                        <li class="active treeview">
-                            <a href="#">
-                                <i class="fa fa-users"></i> <span>Employees</span>
-                                <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="{!! route('employees'); !!}"><i class="fa fa-users"></i> Employees List</a></li>
-                                </li>
-                            </ul>
-                        </li>
+                        {{--Company Menu--}}
                         <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-th-large"></i> <span>Company</span>
@@ -111,6 +100,33 @@
                                 </li>
                             </ul>
                         </li>
+                        {{--Employee Menu--}}
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i> <span>Employees</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{!! route('employees'); !!}"><i class="fa fa-users"></i> Employees List</a></li>
+                                </li>
+                            </ul>
+                        </li>
+                        {{--Attendance Menu--}}
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-user"></i> <span>Attendance</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{!! route('attendances'); !!}"><i class="fa fa-check"></i> Mark Attendance</a></li>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="active treeview">
                             <a href="#">
                                 <span style="font-weight: bold;font-size: 20px;padding-right: 14px;" class="text-uppercase">M</span><span>Company Settings</span>

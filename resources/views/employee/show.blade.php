@@ -31,8 +31,14 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-12">
-                                <div class="col-md-12">
-                                    {{ Form::image($data['FILE_NAME']) }}
+                                <div class="form-group">
+                                    {{ Html::image($data['FILE_NAME'], 'photo', ['class' => 'center-block']) }}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('photo','Photo :', ['class' => 'col-sm-5 control-label']) !!}
+                                    <div class="col-sm-7">
+                                        {!! Form::file('photo',null, ['class' => 'form-control']) !!}
+                                    </div>
                                 </div>
                                 <div class="form-group {{$errors->has('name')?'has-error':''}}">
                                     {!! Form::label('name','Nama Lengkap * :', ['class' => 'col-sm-5 control-label']) !!}

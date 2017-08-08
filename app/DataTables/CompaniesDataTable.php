@@ -49,6 +49,7 @@ class CompaniesDataTable extends DataTable
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
+                        'scrollY' => true,
                         'buttons' => [
                             'create',
                             'export',
