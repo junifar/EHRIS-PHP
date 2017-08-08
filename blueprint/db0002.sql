@@ -10,10 +10,48 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2017-08-07 18:33:35
+Date: 2017-08-08 18:10:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for attendances
+-- ----------------------------
+DROP TABLE IF EXISTS `attendances`;
+CREATE TABLE `attendances` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TANGGAL` date DEFAULT NULL,
+  `COMPANY_ID` int(11) DEFAULT NULL,
+  `CREATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `UPDATED_AT` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `USER_CREATED` int(11) DEFAULT NULL,
+  `USER_MODIFIED` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNIQUE_ATTENDANCE` (`TANGGAL`,`COMPANY_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for attendance_details
+-- ----------------------------
+DROP TABLE IF EXISTS `attendance_details`;
+CREATE TABLE `attendance_details` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `EMPLOYEE_ID` int(11) DEFAULT NULL,
+  `ATTENDANCE_ID` int(11) DEFAULT NULL,
+  `CREATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `UPDATED_AT` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `USER_CREATED` int(11) DEFAULT NULL,
+  `USER_MODIFIED` int(11) DEFAULT NULL,
+  `ABSEN_IN` time DEFAULT NULL,
+  `ABSEN_OUT` time DEFAULT NULL,
+  `NOTE` varchar(255) DEFAULT NULL,
+  `REMARK` text,
+  `ATTEND` tinyint(1) DEFAULT NULL,
+  `PERMIT_TYPE_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `INDEX_UNIQUE_ABSEN` (`EMPLOYEE_ID`,`ATTENDANCE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for banks
@@ -192,6 +230,20 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Table structure for permit_types
+-- ----------------------------
+DROP TABLE IF EXISTS `permit_types`;
+CREATE TABLE `permit_types` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(255) DEFAULT NULL,
+  `CREATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `UPDATED_AT` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `USER_CREATED` int(11) DEFAULT NULL,
+  `USER_MODIFIED` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for religions

@@ -21,12 +21,12 @@
                     <div class=" col-md-5 form-group">
                         {!! Form::label('company_id','Company :',['class' => 'col-sm-5 control-label']) !!}
                         <div class="col-sm-7">
-                            {!! Form::select('company_id', $companies, null, ['class' => 'form-control', 'placeholder' => 'Company']) !!}
+                            {!! Form::select('company_id', $companies, $_GET['company_id'], ['class' => 'form-control', 'placeholder' => 'Company']) !!}
                         </div>
                     </div>
                     <div class="col-md-3 form-group">
                         <div id="datePicker" class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                            <input type="text" class="form-control" name="date" placeholder="select date">
+                            <input type="text" class="form-control" name="date" placeholder="select date" value="{{ $_GET['date'] }}">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -50,17 +50,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($datas as $data)
                                 <tr>
-                                    <td>11075</td>
-                                    <td>Junifar Hidayat</td>
+                                    <td>{{ $data->ID  }}</td>
+                                    <td>{{ $data->EMPLOYEE->NAME  }}</td>
                                     <td>
-                                        <input name="attend" type="checkbox" checked data-toggle="toggle" data-on="Hadir" data-off="Alpha" data-onstyle="success"
-                                               data-offstyle="danger">
+                                        <input name="attend" type="checkbox" {{ ($data->ATTEND == 1) ? 'checked' : '' }} data-toggle="toggle" data-on="Hadir" data-off="Alpha" data-onstyle="success"
+                                               data-offstyle="danger" />
                                     </td>
                                     <td>
                                         {!! Form::select('permit_type_id', $permit_types, null, ['class' => 'form-control', 'placeholder' => 'Keterangan Alpha']) !!}
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
